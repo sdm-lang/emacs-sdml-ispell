@@ -1,3 +1,1 @@
-(sdml-ispell :fetcher github
-             :repo "sdm-lang/emacs-sdml-ispell"
-             :files ("sdml-ispell/sdml-ispell.el"))
+(sdml-ispell :repo "sdm-lang/emacs-sdml-ispell" :fetcher github)

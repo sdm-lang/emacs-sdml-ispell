@@ -3,7 +3,7 @@
 ;; Copyright (c) 2023, 2024 Simon Johnston
 
 ;; Author: Simon Johnston <johnstonskj@gmail.com>
-;; Version: 0.1.5snapshot
+;; Version: 0.1.5
 ;; Package-Requires: ((emacs "28.2") (tree-sitter-ispell "0.1.0") (sdml-mode "0.1.6"))
 ;; URL: https://github.com/johnstonskj/emacs-sdml-mode
 ;; Keywords: languages tools
@@ -33,7 +33,7 @@
 ;;
 ;; `(use-package sdml-ispell
 ;;    :ensure t
-;;    :config (sdml-ispell-setup))'
+;;    :after sdml-mode)'
 ;;
 
 ;; Usage
@@ -52,7 +52,7 @@
 ;; --------------------------------------------------------------------------
 
 (defconst sdml-ispell-grammar-text-mapping
-  '(quoted_string comment)
+  '(quoted_string line_comment)
   "Tree-sitter node types to be spell checked with ispell.")
 
 ;; --------------------------------------------------------------------------
@@ -67,7 +67,7 @@
   "Keymap for SDML ispell major mode.")
 
 ;; --------------------------------------------------------------------------
-;; Mode Definition
+;; Spelling Minor Mode
 ;; --------------------------------------------------------------------------
 
 ;;;###autoload
@@ -79,19 +79,15 @@ Key bindings:
 \\{sdml-ispell-mode-map}"
   :group 'sdml
   :tag "Enable SDML ispell minor mode"
-
+  :lighter nil
+  (add-to-list 'tree-sitter-ispell-grammar-text-mapping
+               `(sdml-mode . ,sdml-ispell-grammar-text-mapping))
   ;; How do we "disable" this?
   (when sdml-ispell-mode
     (tree-sitter-ispell-run-buffer)))
 
 ;;;###autoload
-(defun sdml-ispell-setup ()
-  "Setup the mode, adding configuration to `tree-sitter-ispell'."
-  (interactive)
-  (add-to-list 'tree-sitter-ispell-grammar-text-mapping
-               `(sdml-mode . ,sdml-ispell-grammar-text-mapping)))
-
-(add-hook 'sdml-mode-hook #'sdml-ispell-setup)
+(add-hook 'sdml-mode-hook #'sdml-ispell-mode)
 
 (provide 'sdml-ispell)
 
