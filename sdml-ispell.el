@@ -73,7 +73,9 @@
 ;;;###autoload
 (define-minor-mode
   sdml-ispell-mode
-  "Minor mode to allow ispell checking in SDML text content.
+  "Minor mode to allow `ispell' checking in SDML text content.
+
+Currently only the tree-sitter nodes `quoted_string' and `line_comment'.
 
 Key bindings:
 \\{sdml-ispell-mode-map}"
@@ -81,10 +83,7 @@ Key bindings:
   :tag "Enable SDML ispell minor mode"
   :lighter nil
   (add-to-list 'tree-sitter-ispell-grammar-text-mapping
-               `(sdml-mode . ,sdml-ispell-grammar-text-mapping))
-  ;; How do we "disable" this?
-  (when sdml-ispell-mode
-    (tree-sitter-ispell-run-buffer)))
+               `(sdml-mode . ,sdml-ispell-grammar-text-mapping)))
 
 ;;;###autoload
 (add-hook 'sdml-mode-hook #'sdml-ispell-mode)
