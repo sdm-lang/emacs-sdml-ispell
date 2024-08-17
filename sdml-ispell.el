@@ -24,16 +24,16 @@
 
 ;;; Commentary:
 
-;; This package enables spell checking, with ispell, for elements of the buffer
-;; that represent content.  Currently this selects only string values and comments
-;; for checking.
+;; This package enables spell checking, with ispell, for elements of an
+;; SDML buffer that represent content.  Currently this selects only string
+;; values and comments for checking.
 ;;
 
 ;; Install
 ;;
 ;; `(use-package sdml-ispell
 ;;    :ensure t
-;;    :after sdml-mode)'
+;;    :after (ispell sdml-mode))'
 ;;
 
 ;; Usage

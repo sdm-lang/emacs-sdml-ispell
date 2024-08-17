@@ -2,9 +2,8 @@
 
 ![SDML Logo Text](https://raw.githubusercontent.com/sdm-lang/.github/main/profile/horizontal-text.svg)
 
-This package provides an Emacs tree-sitter based major mode for SDML - the
-[Simple Domain Modeling Language](https://github.com/johnstonskj/tree-sitter-sdml). This minor provides *selective* spell using
-[ispell](https://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html) checking.
+This package provides *selective* spell checking using [ispell](https://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html) for SDML -
+the [Simple Domain Modeling Language](https://github.com/johnstonskj/tree-sitter-sdml) buffers.
 
 Following the behavior of `flyspell-prog-mode`, this mode only checks the nodes
 corresponding to comments and strings.
