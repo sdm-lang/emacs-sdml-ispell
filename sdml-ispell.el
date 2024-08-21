@@ -31,13 +31,20 @@
 
 ;; Install
 ;;
+;; Install is easiest from MELPA, here's how with `use-package`. Note the hook clause
+;; to ensure this minor mode is always enabled for SDML source files.
+;;
 ;; `(use-package sdml-ispell
 ;;    :ensure t
 ;;    :after (ispell sdml-mode)
 ;;    :hook (sdml-mode . sdml-ispell-mode))'
 ;;
+;; Or, interactively; `M-x package-install RET sdml-ispell RET'
+;;
 
 ;; Usage
+;;
+;; Key bindings:
 ;;
 ;; `\\[tree-sitter-ispell-run-at-point]' -- spell check the element at point.
 ;; `\\[tree-sitter-ispell-run-buffer]' -- spell check all elements in the buffer.
