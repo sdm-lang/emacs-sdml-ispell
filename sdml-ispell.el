@@ -33,7 +33,8 @@
 ;;
 ;; `(use-package sdml-ispell
 ;;    :ensure t
-;;    :after (ispell sdml-mode))'
+;;    :after (ispell sdml-mode)
+;;    :hook (sdml-mode . sdml-ispell-mode))'
 ;;
 
 ;; Usage
@@ -84,9 +85,6 @@ Key bindings:
   :lighter nil
   (add-to-list 'tree-sitter-ispell-grammar-text-mapping
                `(sdml-mode . ,sdml-ispell-grammar-text-mapping)))
-
-;;;###autoload
-(add-hook 'sdml-mode-hook #'sdml-ispell-mode)
 
 (provide 'sdml-ispell)
 

@@ -10,32 +10,16 @@ corresponding to comments and strings.
 
 ## Installing
 
-Install is easiest from MELPA, here's how with `use-package`.
-
-```elisp
-(use-package sdml-ispell
-  :after (ispell sdml-mode))
-```
-
-Or, interactively; `M-x package-install RET sdml-ispell RET`
-
-### Install manually
-
-First clone the Git repository to a local path.
-
-```bash
-git clone https://github.com/johnstonskj/emacs-sdml-ispell.git
-```
-
-Usage
-
-The following should now work.
+Install is easiest from MELPA, here's how with `use-package`. Note the hook clause
+to ensure this minor mode is always enabled for SDML source files.
 
 ```elisp
 (use-package sdml-ispell
   :after (ispell sdml-mode)
-  :load-path "/path/to/repo"))
+  :hook (sdml-mode . sdml-ispell-mode)
 ```
+
+Or, interactively; `M-x package-install RET sdml-ispell RET`
 
 ## Bindings
 
@@ -44,12 +28,17 @@ The following should now work.
 
 ## Contributing
 
-The packages in this repository should pass the standard package checks,
-including:
+This package includes an [Eldev](https://github.com/emacs-eldev/eldev) file and the following MUST be run before
+creating any PR.
 
-- `byte-compile-file`
-- `package-lint`
-- `checkdoc`
+- `eldev lint`
+- `eldev doctor`
+- `eldev package --load-before-compiling --stop-on-failure --warnings-as-errors`
+- `eldev test`
+- `eldev test --undercover auto,coveralls,merge,dontsent -U simplecov.json`
+- `eldev release -nU 9.9.9`
+
+The script [eldev-check.sh](https://gist.github.com/johnstonskj/6af5ef6866bfb1288f4962a6ba3ef418) may be useful to you if you do not have your own Eldev workflow.
 
 ## License
 
